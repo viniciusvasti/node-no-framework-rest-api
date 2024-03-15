@@ -4,6 +4,7 @@
   "description": "REST api w/o framworks nor external libs",
   "main": "app/main.js",
   "scripts": {
+    "start": "node app/main.js",
     "test": "node --test **/*.test.js"
   },
   "author": "Vinicius A Santos",
