@@ -1,3 +1,30 @@
+const request = {
+    method: "POST",
+    path: "/products/lala?test=1&test2=nice",
+    protocol: "HTTP/1.1",
+    headers: {
+        Host: "localhost:3000",
+        "User-Agent": "curl/8.4.0",
+        Accept: "application/json",
+        "Content-Length": "35",
+        "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: '{ "name": "iphone", "price": 1200 }',
+    query: { test: "1", test2: "nice" },
+    pathWithoutQuery: "/products/lala",
+};
+
+/**
+ * @typedef {Object} Request
+ * @property {string} method
+ * @property {string} path
+ * @property {string} protocol
+ * @property {Object} headers
+ * @property {string} body
+ * @property {Object} query
+ * @property {string} pathWithoutQuery
+ */
+
 /**
  * POST /products/lala?test=1&test2=nice HTTP/1.1
  * Host: localhost:3000
@@ -8,8 +35,8 @@
  * 
  * { "name": "iphone", "price": 1200 }
  *
- * @param {*} request
- * @returns {Object} { method: string, path: string, protocol: string, headers: Object, body: string, query: Object, pathWithoutQuery: string }
+ * @param {Buffer} requestBuffer
+ * @returns {Request} request
  */
 function parseRequest(requestBuffer) {
     const request = requestBuffer.toString();

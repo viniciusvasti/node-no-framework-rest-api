@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 const server = net.createServer((socket) => {
     socket.on("data", (data) => {
-        console.log(parseRequest(data));
+        const request = parseRequest(data);
         socket.end();
     });
     socket.on("close", () => {
