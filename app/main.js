@@ -1,8 +1,13 @@
 const net = require("net");
+const { parseRequest } = require("./requestUtils");
 
 const port = process.env.PORT || 3000;
 
 const server = net.createServer((socket) => {
+    socket.on("data", (data) => {
+        console.log(parseRequest(data));
+        socket.end();
+    });
     socket.on("close", () => {
         socket.end();
     });
