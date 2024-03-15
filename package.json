@@ -1,0 +1,11 @@
+{
+  "name": "no-framework-rest-api",
+  "version": "1.0.0",
+  "description": "REST api w/o framworks nor external libs",
+  "main": "app/main.js",
+  "scripts": {
+    "test": "node --test **/*.test.js"
+  },
+  "author": "Vinicius A Santos",
+  "license": "ISC"
+}
