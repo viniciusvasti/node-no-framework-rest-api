@@ -5,7 +5,9 @@
   "main": "app/main.js",
   "scripts": {
     "start": "node app/main.js",
-    "test": "node --test **/*.test.js"
+    "test": "node --test **/*.test.js",
+    "test:watch": "node --test --watch **/*.test.js",
+    "test:coverage": "node --test --experimental-test-coverage **/*.test.js"
   },
   "author": "Vinicius A Santos",
   "license": "ISC"
