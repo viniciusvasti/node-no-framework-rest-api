@@ -32,7 +32,7 @@ const request = {
  * Accept: application/json
  * Content-Length: 35
  * Content-Type: application/x-www-form-urlencoded
- * 
+ *
  * { "name": "iphone", "price": 1200 }
  *
  * @param {Buffer} requestBuffer
@@ -40,7 +40,6 @@ const request = {
  */
 function parseRequest(requestBuffer) {
     const request = requestBuffer.toString();
-    console.log(request);
     const [method, path, protocol] = request.split("\r\n")[0].split(" ");
     const [pathWithoutQuery, query] = path.split("?");
     const headers = request
@@ -69,4 +68,24 @@ function parseRequest(requestBuffer) {
     };
 }
 
-module.exports = { parseRequest };
+/**
+ * @typedef {Object} Response
+ * @property {number} status
+ * @property {Object} headers
+ * @property {string} body
+ */
+
+/**
+ * @param {Response} response
+ * @returns {string}
+ */
+function responseString(response) {
+    let responseStr = `HTTP/1.1 ${response.status}\r\n`;
+    for (const header in response.headers) {
+        responseStr += `${header}: ${response.headers[header]}\r\n`;
+    }
+    responseStr += `\r\n${JSON.stringify(response.body)}\r\n`;
+    return responseStr;
+}
+
+module.exports = { parseRequest, responseString };
