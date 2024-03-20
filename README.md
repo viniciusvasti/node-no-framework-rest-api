@@ -41,8 +41,6 @@ Returns a list of all cars available for rental in a given car class. It returns
         "make": "Toyota",
         "model": "Corolla",
         "year": 2019,
-        "color": "Red",
-        "licensePlate": "ABC123",
         "rented": false
     },
     {
@@ -50,13 +48,22 @@ Returns a list of all cars available for rental in a given car class. It returns
         "make": "Toyota",
         "model": "Camry",
         "year": 2019,
-        "color": "Blue",
-        "licensePlate": "DEF456",
         "rented": false
     }
 ]
 ```
 
+### GET /car-classes/:id/cars/:id
+Returns a single car in a given car class. It returns a car in the form of:
+```json
+{
+    "id": "2",
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2020,
+    "classId": "1"
+}
+```
 
 ### POST /car-classes/:id/cars
 Creates a new car in a given car class. It expects a JSON body in the form of:
@@ -64,9 +71,7 @@ Creates a new car in a given car class. It expects a JSON body in the form of:
 {
     "make": "Toyota",
     "model": "Corolla",
-    "year": 2019,
-    "color": "Red",
-    "licensePlate": "ABC123"
+    "year": 2019
 }
 ```
 
